@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Samsung — Featured Product Ad</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --accent:#00a2ff;
+      --glass: rgba(34, 247, 232, 0.06);
+      --card: #0f1724;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0; background:linear-gradient(180deg,var(--bg),#4588d4); color:#e6eef8; -webkit-font-smoothing:antialiased}
+
+    .ad-wrapper{max-width:1100px; margin:36px auto; padding:28px; border-radius:16px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); box-shadow:0 8px 40px rgba(2,6,23,0.6); display:grid; grid-template-columns:1fr 420px; gap:28px; align-items:center}
+
+    /* left hero */
+    .hero{padding:20px}
+    .kicker{display:inline-block; font-size:12px; letter-spacing:1px; padding:6px 10px; background:var(--glass); border-radius:999px; color:var(--accent); margin-bottom:14px}
+    h1{font-size:34px; margin:0 0 12px 0; line-height:1.05}
+    p.lead{color:#cfe7ff; margin:0 0 18px; opacity:0.9}
+
+    .features{display:flex; gap:12px; margin-top:14px}
+    .feat{background:rgba(255,255,255,0.03); padding:10px 12px; border-radius:10px; font-size:13px}
+
+    .ctas{margin-top:20px; display:flex; gap:12px}
+    .btn{padding:12px 18px; border-radius:10px; border:0; cursor:pointer; font-weight:600}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#6be0ff); color:#032133; box-shadow:0 8px 20px rgba(0,162,255,0.12)}
+    .btn-ghost{background:transparent; color:#d6e9ff; border:1px solid rgba(255,255,255,0.06)}
+
+    /* right panel (carousel / product) */
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03)); padding:18px; border-radius:14px}
+    .carousel{position:relative; overflow:hidden; height:320px; border-radius:10px; background:#071226}
+    .slides{display:flex; width:300%; height:100%; transition:transform 700ms cubic-bezier(.2,.9,.2,1)}
+    .slide{flex:0 0 100%; display:grid; grid-template-columns:1fr; place-items:center; padding:20px}
+    .product-img{max-width:100%; max-height:260px; object-fit:contain}
+
+    .dots{display:flex; gap:8px; justify-content:center; margin-top:12px}
+    .dot{width:10px; height:10px; border-radius:999px; background:rgba(255,255,255,0.12); cursor:pointer}
+    .dot.active{background:var(--accent); box-shadow:0 6px 18px rgba(0,162,255,0.14)}
+
+    .specs{display:flex; gap:12px; margin-top:14px; justify-content:space-between}
+    .spec{flex:1; background:rgba(255,255,255,0.02); padding:10px; border-radius:8px; text-align:center}
+    .spec b{display:block; font-size:18px}
+
+    /* small screens */
+    @media (max-width:880px){
+      .ad-wrapper{grid-template-columns:1fr; padding:18px}
+      .panel{order:-1}
+      h1{font-size:26px}
+    }
+
+    /* subtle entrance animation */
+    .ad-wrapper{opacity:0; transform:translateY(8px); animation:popIn 700ms cubic-bezier(.2,.9,.2,1) forwards}
+    @keyframes popIn{to{opacity:1; transform:none}}
+
+    /* accessible focus styles */
+    .btn:focus, .dot:focus{outline:3px solid rgba(0,162,255,0.16); outline-offset:3px}
+
+  </style>
+</head>
+<body>
+  <main class="ad-wrapper" role="region" aria-label="Samsung featured product advertisement">
+    <section class="hero">
+      <span class="kicker">NEW · Exclusive</span>
+      <h1>Meet the future — Galaxy X Pro</h1>
+      <p class="lead">Engineered for speed, designed for life. The Galaxy X Pro brings next-level performance, an immersive display, and pro-grade cameras in a thinner, smarter package.</p>
+
+      <div class="features" aria-hidden="true">
+        <div class="feat">6.9" Dynamic QHD+</div>
+        <div class="feat">5000 mAh FastCharge</div>
+        <div class="feat">200MP Pro Camera</div>
+      </div>
+
+      <div class="ctas">
+        <button class="btn btn-primary" id="buyNow">Buy Now</button>
+        <button class="btn btn-ghost" id="learnMore">Learn More</button>
+      </div>
+
+      <div style="margin-top:18px; font-size:13px; color:#bcd8ff; opacity:0.9">
+        <strong>Limited-time offer:</strong> trade-in and save up to <strong><rs.300 class="300"></rs></strong>.
+      </div>
+    </section>
+
+    <aside class="panel" aria-labelledby="productTitle">
+      <div class="carousel" id="carousel" role="group" aria-roledescription="carousel" aria-label="Product images">
+        <div class="slides" id="slides">
+          <figure class="slide" aria-hidden="false">
+            <img src="sam.jpeg" alt="Galaxy X Pro in Midnight Black" class="product-img">
+          </figure>
+          <figure class="slide" aria-hidden="true">
+            <img src="sam2.jpg" alt="Galaxy X Pro in Ocean Blue" class="product-img">
+          </figure>
+          <figure class="slide" aria-hidden="true">
+            <img src="sam3.jpg" alt="Galaxy X Pro in Aura Silver" class="product-img">
+          </figure>
+        </div>
+      </div>
+
+      <div class="dots" role="tablist" aria-label="Select image">
+        <button class="dot active" aria-label="Image 1" data-index="0"></button>
+        <button class="dot" aria-label="Image 2" data-index="1"></button>
+        <button class="dot" aria-label="Image 3" data-index="2"></button>
+      </div>
+
+      <div class="specs" aria-hidden="false">
+        <div class="spec"><b>From rs.110000</b><small>Starting price</small></div>
+        <div class="spec"><b>2 yrs</b><small>Warranty</small></div>
+        <div class="spec"><b>Express</b><small>Next-day delivery</small></div>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    // Simple carousel logic with autoplay and accessible controls
+    (function(){
+      const slides = document.getElementById('slides');
+      const dots = Array.from(document.querySelectorAll('.dot'));
+      let index = 0;
+      const total = dots.length;
+      let timer = null;
+
+      function go(i){
+        index = (i + total) % total;
+        slides.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((d,idx)=> d.classList.toggle('active', idx===index));
+        // update aria-hidden on slides
+        Array.from(slides.children).forEach((s,idx)=> s.setAttribute('aria-hidden', idx!==index));
+      }
+
+      dots.forEach(d=> d.addEventListener('click', e=> { go(Number(d.dataset.index)); resetTimer(); }));
+
+      function startTimer(){ timer = setInterval(()=> go(index+1), 3800); }
+      function resetTimer(){ clearInterval(timer); startTimer(); }
+      startTimer();
+
+      // CTA interactions
+      document.getElementById('buyNow').addEventListener('click', ()=> {
+        window.alert('Redirecting to purchase page...');
+      });
+      document.getElementById('learnMore').addEventListener('click', ()=> {
+        window.alert('Opening product details...');
+      });
+
+      // pause autoplay on hover for better accessibility
+      const carousel = document.getElementById('carousel');
+      carousel.addEventListener('mouseenter', ()=> clearInterval(timer));
+      carousel.addEventListener('mouseleave', ()=> startTimer());
+
+      // keyboard navigation
+      carousel.addEventListener('keydown', (e)=>{
+        if(e.key==="ArrowRight") go(index+1);
+        if(e.key==="ArrowLeft") go(index-1);
+      });
+      carousel.setAttribute('tabindex', '0');
+
+    })();
+  </script>
+</body>
+</html>
